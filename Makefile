@@ -16,7 +16,7 @@ DIRS = $(BUILD_DIR) $(OBJS_DIR)
 
 LD = ld
 ASM = nasm
-ASMFLAGS = -f elf64
+ASMFLAGS = -f elf64 -F dwarf
 
 default: all
 
