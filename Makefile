@@ -14,9 +14,10 @@ OBJS = $(patsubst $(SRCS_DIR)/%.asm, $(OBJS_DIR)/%.o, $(SRCS))
 TARGET = $(BUILD_DIR)/main
 DIRS = $(BUILD_DIR) $(OBJS_DIR)
 
-LD = ld
 ASM = nasm
 ASMFLAGS = -f elf64 -F dwarf
+LD = ld
+LDFLADS =
 
 default: all
 
@@ -27,7 +28,7 @@ $(DIRS):
 
 $(TARGET): $(DIRS) $(OBJS)
 	@$(RM) $(TARGET)
-	$(LD) $(OBJS) -o $@
+	$(LD) $(LDFLAGS) $(OBJS) -o $@
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.asm
 	$(ASM) $(ASMFLAGS) $< -o $@
